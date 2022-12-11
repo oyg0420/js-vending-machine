@@ -1,0 +1,25 @@
+{
+  "name": "js-vending-machine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyg0420/js-vending-machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyg0420/js-vending-machine/issues"
+  },
+  "homepage": "https://github.com/oyg0420/js-vending-machine#readme",
+  "devDependencies": {
+    "cypress": "^12.0.2",
+    "live-server": "^1.2.2"
+  }
+}
