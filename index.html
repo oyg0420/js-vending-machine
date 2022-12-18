@@ -15,12 +15,27 @@
     <button id="product-purchase-menu">상품 구매</button>
     <div id="app">
       <h3>상품 추가하기</h3>
-      <div class="product-container">
-        <input type="text" id="product-name-input" placeholder="상품명" />
-        <input type="number" id="product-price-input" placeholder="가격" />
-        <input type="number" id="product-quantity-input" placeholder="수량" />
-        <button id="product-add-button">추가하기</button>
-      </div>
+      <form id="product-form" class="product-container">
+        <input
+          type="text"
+          required
+          id="product-name-input"
+          placeholder="상품명"
+        />
+        <input
+          type="number"
+          required
+          id="product-price-input"
+          placeholder="가격"
+        />
+        <input
+          type="number"
+          required
+          id="product-quantity-input"
+          placeholder="수량"
+        />
+        <button type="submit" id="product-add-button">추가하기</button>
+      </form>
       <table class="product-inventory">
         <colgroup>
           <col style="width: 140px" />
