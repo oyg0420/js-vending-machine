@@ -1,24 +1,26 @@
 class Coin {
   #unit;
-  #count;
-  constructor(unit, count) {
+  #quantity;
+  constructor(unit, quantity) {
     this.#unit = unit;
-    this.#count = count;
+    this.#quantity = quantity;
   }
 
   get unit() {
     return this.#unit;
   }
 
-  get count() {
-    return this.#count;
+  get quantity() {
+    return this.#quantity;
   }
 
   set unit(nextUnit) {
     this.#unit = nextUnit;
   }
 
-  set count(nextCount) {
-    this.#count = nextCount;
+  set quantity(nextQuantity) {
+    this.#quantity = nextQuantity;
   }
 }
+
+export default Coin;

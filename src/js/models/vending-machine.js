@@ -14,11 +14,13 @@ class VendingMachine {
     return this.#coins;
   }
 
-  set products(nextProduct) {
-    this.#products.push(nextProduct);
-  }
+  setProducts = (nextProducts) => {
+    this.#products = nextProducts;
+  };
 
-  set coins(nextCoin) {
-    this.#coins.push(nextCoin);
+  setCoins(nextCoins) {
+    this.#coins = nextCoins;
   }
 }
+
+export default VendingMachine;

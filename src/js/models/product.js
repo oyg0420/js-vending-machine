@@ -1,11 +1,11 @@
 class Product {
   #name;
   #price;
-  #count;
-  constructor(name, price, count) {
+  #quantity;
+  constructor(name, price, quantity) {
     this.#name = name;
     this.#price = price;
-    this.#count = count;
+    this.#quantity = quantity;
   }
 
   get name() {
@@ -16,15 +16,17 @@ class Product {
     return this.#price;
   }
 
-  get count() {
-    return this.#count;
+  get quantity() {
+    return this.#quantity;
   }
 
   set price(nextPrice) {
     this.#price = nextPrice;
   }
 
-  set count(nextCount) {
-    this.#count = nextCount;
+  set quantity(nextQuantity) {
+    this.#quantity = nextQuantity;
   }
 }
+
+export default Product;
