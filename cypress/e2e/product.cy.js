@@ -1,4 +1,4 @@
-import { PRODUCT } from '../../src/js/const.js';
+import { VENDING_MACHINE } from '../../src/js/const.js';
 
 describe('자판기 미션', () => {
   beforeEach(() => {
@@ -52,7 +52,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              PRODUCT.ERROR_MESSAGE.MIN_PRICE
+              VENDING_MACHINE.ERROR_MESSAGE.MIN_PRICE
             );
           });
       });
@@ -68,7 +68,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              PRODUCT.ERROR_MESSAGE.UNIT_PRICE
+              VENDING_MACHINE.ERROR_MESSAGE.UNIT_PRICE
             );
           });
       });
@@ -97,7 +97,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              PRODUCT.ERROR_MESSAGE.MIN_QUANTITY
+              VENDING_MACHINE.ERROR_MESSAGE.MIN_QUANTITY
             );
           });
       });
