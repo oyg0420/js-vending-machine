@@ -1,21 +1,18 @@
 import { $ } from '../utils.js';
-import { VENDING_MACHINE } from '../const.js';
+import { COIN, VENDING_MACHINE } from '../const.js';
 import Coin from '../models/coin.js';
 
 class CoinManagement {
   constructor(vendingMachine) {
     this.vendingMachine = vendingMachine;
     this.$coinForm = $('#coin-form');
-    this.$coinChargeInput = $('#coin-charge-input');
     this.$coinChargeAmount = $('#coin-charge-amount');
     this.$coinInventory = $('#coin-inventory');
     this.initCoinInventory();
     this.initEvent();
   }
 
-  validateCoin() {
-    const { value: coin } = this.$coinChargeInput;
-
+  validateCoin(coin) {
     if (coin < VENDING_MACHINE.MIN_PRICE) {
       alert(VENDING_MACHINE.ERROR_MESSAGE.MIN_PRICE);
       return false;
@@ -39,15 +36,19 @@ class CoinManagement {
     return totalCoinAmount;
   }
 
-  classifyCoin() {
-    const { value } = this.$coinChargeInput;
+  classifyCoin(coin) {
     const classifiedCoins = [];
-    const coins = [500, 100, 50, 10];
-    let remain = value;
+    const coins = [
+      COIN.UNIT.FIVE_HUNDRED,
+      COIN.UNIT.ONE_HUNDRED,
+      COIN.UNIT.FIFTY,
+      COIN.UNIT.TEN,
+    ];
+    let remained = coin;
 
     coins.forEach((nextCoin) => {
-      const quantity = Math.floor(remain / nextCoin);
-      remain = remain % nextCoin;
+      const quantity = Math.floor(remained / nextCoin);
+      remained = remained % nextCoin;
       classifiedCoins.push({
         unit: nextCoin,
         quantity: quantity,
@@ -74,12 +75,13 @@ class CoinManagement {
       .join('');
   }
 
-  setCoins() {
+  setCoins(controller) {
     const { coins, setCoins } = this.vendingMachine;
     const nextCoins = [...coins];
+    const nextCoin = controller['coin'].value;
 
-    if (this.validateCoin()) {
-      const classifiedCoins = this.classifyCoin();
+    if (this.validateCoin(nextCoin)) {
+      const classifiedCoins = this.classifyCoin(nextCoin);
 
       classifiedCoins.forEach((classifiedCoin) => {
         const { unit, quantity } = classifiedCoin;
@@ -98,8 +100,8 @@ class CoinManagement {
     }
   }
 
-  handleSubmit() {
-    this.setCoins();
+  handleSubmit(target) {
+    this.setCoins(target);
     this.setCoinChargeAmount();
     this.setCoinInventory();
     this.$coinForm.reset();
@@ -113,7 +115,7 @@ class CoinManagement {
   initEvent() {
     this.$coinForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      this.handleSubmit();
+      this.handleSubmit(event.target);
     });
   }
 }

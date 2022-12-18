@@ -5,11 +5,8 @@ import { VENDING_MACHINE } from '../const.js';
 class ProductManagement {
   constructor(vendingMachine) {
     this.vendingMachine = vendingMachine;
-    this.productForm = $('#product-form');
-    this.productInventory = $('#product-inventory-container');
-    this.productNameInput = $('#product-name-input');
-    this.productPriceInput = $('#product-price-input');
-    this.productQuantityInput = $('#product-quantity-input');
+    this.$productForm = $('#product-form');
+    this.$productInventory = $('#product-inventory-container');
     this.initEvent();
   }
 
@@ -28,10 +25,7 @@ class ProductManagement {
     return nextProducts;
   }
 
-  validateProduct() {
-    const { value: price } = this.productPriceInput;
-    const { value: quantity } = this.productQuantityInput;
-
+  validateProduct({ price, quantity }) {
     if (price < VENDING_MACHINE.MIN_PRICE) {
       alert(VENDING_MACHINE.ERROR_MESSAGE.MIN_PRICE);
       return false;
@@ -53,7 +47,7 @@ class ProductManagement {
   setProductInventory() {
     const { products } = this.vendingMachine;
 
-    this.productInventory.innerHTML = products
+    this.$productInventory.innerHTML = products
       .map(
         (product) =>
           `<tr><th>${product.name}</th><th>${product.price}</th><th>${product.quantity}</th></tr>`
@@ -61,16 +55,15 @@ class ProductManagement {
       .join('');
   }
 
-  setProducts() {
+  setProducts(controller) {
     const { products, setProducts } = this.vendingMachine;
+    const name = controller['name'].value;
+    const price = controller['price'].value;
+    const quantity = controller['quantity'].value;
 
-    if (this.validateProduct()) {
+    if (this.validateProduct({ price, quantity })) {
       let nextProducts = [...products];
-      const nextProduct = new Product(
-        this.productNameInput.value,
-        this.productPriceInput.value,
-        this.productQuantityInput.value
-      );
+      const nextProduct = new Product(name, price, quantity);
 
       const hasSameProductName =
         this.getSameProductNameIndex(nextProduct.name) > -1;
@@ -85,16 +78,16 @@ class ProductManagement {
     }
   }
 
-  handleSubmit() {
-    this.setProducts();
+  handleSubmit(target) {
+    this.setProducts(target);
     this.setProductInventory();
-    this.productForm.reset();
+    this.$productForm.reset();
   }
 
   initEvent() {
-    this.productForm.addEventListener('submit', (event) => {
+    this.$productForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      this.handleSubmit();
+      this.handleSubmit(event.target);
     });
   }
 }

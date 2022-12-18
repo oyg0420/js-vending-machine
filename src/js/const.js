@@ -16,3 +16,14 @@ export const PAGE = {
   COIN_MANAGEMENT: 'coin-management',
   PRODUCT_PURCHASE: 'product-purchase',
 };
+
+const UNIT = {
+  FIVE_HUNDRED: 500,
+  ONE_HUNDRED: 100,
+  FIFTY: 50,
+  TEN: 10,
+};
+
+export const COIN = {
+  UNIT,
+};

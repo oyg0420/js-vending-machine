@@ -4,18 +4,21 @@ const productManagementPage = `<h3>상품 추가하기</h3>
       type="text"
       required
       id="product-name-input"
+      name="name"
       placeholder="상품명"
     />
     <input
       type="number"
       required
       id="product-price-input"
+      name="price"
       placeholder="가격"
     />
     <input
       type="number"
       required
       id="product-quantity-input"
+      name="quantity"
       placeholder="수량"
     />
     <button type="submit" id="product-add-button">추가하기</button>
