@@ -10,3 +10,9 @@ export const PRODUCT = {
   MIN_QUANTITY: 1,
   ERROR_MESSAGE: PRODUCT_ERROR_MESSAGE,
 };
+
+export const PAGE = {
+  PRODUCT_MANAGEMENT: 'product-management',
+  COIN_MANAGEMENT: 'coin-management',
+  PRODUCT_PURCHASE: 'product-purchase',
+};

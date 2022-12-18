@@ -1,6 +1,3 @@
-import VendingMachine from './models/vending-machine.js';
-import ProductManagement from './pages/product-management.js';
+import App from './app.js';
 
-const vendingMachine = new VendingMachine();
-
-new ProductManagement(vendingMachine);
+new App();
