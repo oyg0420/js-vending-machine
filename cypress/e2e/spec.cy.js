@@ -1,3 +1,5 @@
+import { PRODUCT } from '../../src/js/const.js';
+
 describe('자판기 미션', () => {
   beforeEach(() => {
     cy.visit('/');
@@ -50,7 +52,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              '상품 가격은 100원 이상으로 입력해주세요.'
+              PRODUCT.ERROR_MESSAGE.MIN_PRICE
             );
           });
       });
@@ -66,7 +68,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              '상품 가격은 10원 단위로 입력해주세요.'
+              PRODUCT.ERROR_MESSAGE.UNIT_PRICE
             );
           });
       });
@@ -95,7 +97,7 @@ describe('자판기 미션', () => {
           .click()
           .then(() => {
             expect(stub.getCall(0)).to.be.calledWith(
-              '상품 수량은 1개 이상으로 입력해주세요.'
+              PRODUCT.ERROR_MESSAGE.MIN_QUANTITY
             );
           });
       });
