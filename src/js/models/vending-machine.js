@@ -18,9 +18,9 @@ class VendingMachine {
     this.#products = nextProducts;
   };
 
-  setCoins(nextCoins) {
+  setCoins = (nextCoins) => {
     this.#coins = nextCoins;
-  }
+  };
 }
 
 export default VendingMachine;

@@ -14,11 +14,11 @@ class Coin {
     return this.#quantity;
   }
 
-  set unit(nextUnit) {
+  setUnit(nextUnit) {
     this.#unit = nextUnit;
   }
 
-  set quantity(nextQuantity) {
+  setQuantity(nextQuantity) {
     this.#quantity = nextQuantity;
   }
 }

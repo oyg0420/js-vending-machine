@@ -1,4 +1,4 @@
-const page = `<h3>상품 추가하기</h3>
+const productManagementPage = `<h3>상품 추가하기</h3>
   <form id="product-form" class="product-container">
     <input
       type="text"
@@ -36,4 +36,4 @@ const page = `<h3>상품 추가하기</h3>
     <tbody id="product-inventory-container"></tbody>
   </table>`;
 
-export default page;
+export default productManagementPage;

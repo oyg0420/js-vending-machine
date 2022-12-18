@@ -1,11 +1,10 @@
 import Product from '../models/product.js';
 import { $ } from '../utils.js';
-import { PRODUCT } from '../const.js';
+import { VENDING_MACHINE } from '../const.js';
 
 class ProductManagement {
   constructor(vendingMachine) {
     this.vendingMachine = vendingMachine;
-    this.productPage = $('#menu');
     this.productForm = $('#product-form');
     this.productInventory = $('#product-inventory-container');
     this.productNameInput = $('#product-name-input');
@@ -33,18 +32,18 @@ class ProductManagement {
     const { value: price } = this.productPriceInput;
     const { value: quantity } = this.productQuantityInput;
 
-    if (price < PRODUCT.MIN_PRICE) {
-      alert(PRODUCT.ERROR_MESSAGE.MIN_PRICE);
+    if (price < VENDING_MACHINE.MIN_PRICE) {
+      alert(VENDING_MACHINE.ERROR_MESSAGE.MIN_PRICE);
       return false;
     }
 
-    if (price % PRODUCT.UNIT_PRICE !== 0) {
-      alert(PRODUCT.ERROR_MESSAGE.UNIT_PRICE);
+    if (price % VENDING_MACHINE.UNIT_PRICE !== 0) {
+      alert(VENDING_MACHINE.ERROR_MESSAGE.UNIT_PRICE);
       return false;
     }
 
-    if (quantity < PRODUCT.MIN_QUANTITY) {
-      alert(PRODUCT.ERROR_MESSAGE.MIN_QUANTITY);
+    if (quantity < VENDING_MACHINE.MIN_QUANTITY) {
+      alert(VENDING_MACHINE.ERROR_MESSAGE.MIN_QUANTITY);
       return false;
     }
 

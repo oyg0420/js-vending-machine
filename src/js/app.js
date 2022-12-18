@@ -1,7 +1,7 @@
 import { PAGE } from './const.js';
 import VendingMachine from './models/vending-machine.js';
 import pages from './pages/index.js';
-import { $, $$ } from './utils.js';
+import { $ } from './utils.js';
 
 class App {
   constructor() {
@@ -15,11 +15,17 @@ class App {
   loadPage() {
     const page = pages[this.currentPage];
 
-    page.load(this.model);
+    if (page) {
+      page.load(this.model);
+    }
   }
 
-  handleMenuClick(id) {
-    this.currentPage = id;
+  handleMenuClick(nextPage) {
+    if (this.currentPage === nextPage) {
+      return;
+    }
+
+    this.currentPage = nextPage;
     this.loadPage();
   }
 
