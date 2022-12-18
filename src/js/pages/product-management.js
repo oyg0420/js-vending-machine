@@ -32,17 +32,17 @@ class ProductManagement {
     const { value: price } = this.productPriceInput;
     const { value: quantity } = this.productQuantityInput;
 
-    if (price < 100) {
+    if (price < PRODUCT.MIN_PRICE) {
       alert(PRODUCT.ERROR_MESSAGE.MIN_PRICE);
       return false;
     }
 
-    if (price % 10 !== 0) {
+    if (price % PRODUCT.UNIT_PRICE !== 0) {
       alert(PRODUCT.ERROR_MESSAGE.UNIT_PRICE);
       return false;
     }
 
-    if (quantity < 0) {
+    if (quantity < PRODUCT.MIN_QUANTITY) {
       alert(PRODUCT.ERROR_MESSAGE.MIN_QUANTITY);
       return false;
     }
